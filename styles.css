@@ -1,0 +1,150 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background: linear-gradient(135deg, #2c3e50, #34495e); /* Fondo degradado oscuro */
+    perspective: 1000px; /* Perspectiva para el efecto 3D */
+    font-family: 'Arial', sans-serif;
+    overflow: hidden; /* Evita el desbordamiento de las estrellas */
+    position: relative;
+}
+
+/* Estilos para las estrellas */
+.star {
+    position: absolute;
+    background-color: #f1c40f; /* Color amarillo brillante para las estrellas */
+    clip-path: polygon(
+        50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%
+    ); /* Forma de estrella */
+    opacity: 0; /* Inicialmente invisibles */
+    animation: grow 2s ease-in-out forwards, twinkle 2s infinite alternate; /* Animación de crecimiento y brillo */
+}
+
+.star-1 {
+    width: 30px;
+    height: 30px;
+    top: 10%;
+    left: 20%;
+    animation-delay: 0.5s; /* Retraso para la primera estrella */
+}
+
+.star-2 {
+    width: 40px;
+    height: 40px;
+    top: 30%;
+    left: 70%;
+    animation-delay: 1s; /* Retraso para la segunda estrella */
+}
+
+.star-3 {
+    width: 50px;
+    height: 50px;
+    top: 60%;
+    left: 40%;
+    animation-delay: 1.5s; /* Retraso para la tercera estrella */
+}
+
+.star-4 {
+    width: 35px;
+    height: 35px;
+    top: 80%;
+    left: 10%;
+    animation-delay: 2s; /* Retraso para la cuarta estrella */
+}
+
+.star-5 {
+    width: 45px;
+    height: 45px;
+    top: 20%;
+    left: 80%;
+    animation-delay: 2.5s; /* Retraso para la quinta estrella */
+}
+
+/* Animación de crecimiento de las estrellas */
+@keyframes grow {
+    0% {
+        transform: scale(0);
+        opacity: 0;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+/* Animación de brillo para las estrellas */
+@keyframes twinkle {
+    0% {
+        opacity: 0.8;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+/* Estilos para la tarjeta */
+.card-container {
+    width: 250px; /* Tarjeta un poco más grande */
+    height: 350px;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 1s ease-in-out;
+    z-index: 1; /* Asegura que la tarjeta esté sobre las estrellas */
+}
+
+.card {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    transform-style: preserve-3d;
+}
+
+.card-front, .card-back {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    backface-visibility: hidden; /* Oculta la parte trasera */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 15px; /* Bordes más redondeados */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); /* Sombra más pronunciada */
+    background: linear-gradient(135deg, #3498db, #2980b9); /* Fondo degradado para la cara frontal */
+    color: white;
+    font-size: 24px; /* Texto más grande */
+    text-align: center;
+    padding: 20px;
+}
+
+.card-back {
+    background: linear-gradient(135deg, #e74c3c, #c0392b); /* Fondo degradado para la cara trasera */
+    transform: rotateY(180deg); /* Gira la parte trasera */
+}
+
+/* Animación de texto */
+.animated-text {
+    overflow: hidden; /* Oculta el texto que se desborda */
+    white-space: nowrap; /* Evita saltos de línea */
+    border-right: 2px solid white; /* Efecto de cursor */
+    animation: typing 3s steps(10, end), blink-cursor 0.75s step-end infinite;
+}
+
+@keyframes typing {
+    from {
+        width: 0;
+    }
+    to {
+        width: 100%;
+    }
+}
+
+@keyframes blink-cursor {
+    from, to {
+        border-color: transparent;
+    }
+    50% {
+        border-color: white;
+    }
+}
