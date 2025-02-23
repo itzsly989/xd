@@ -1,11 +1,21 @@
-// Esperamos a que el contenido de la página cargue
 document.addEventListener("DOMContentLoaded", () => {
-    const cardContainer = document.querySelector('.card-container');
-    const animatedText = document.querySelector('.animated-text');
+    const btnYes = document.getElementById("btn-yes");
+    const btnNo = document.getElementById("btn-no");
+    const message = document.getElementById("message");
 
-    // Detectamos cuando termina la animación de escritura
-    animatedText.addEventListener('animationend', () => {
-        // Giramos la tarjeta después de que termine la animación
-        cardContainer.style.transform = 'rotateY(180deg)';
+    // Mover el botón "No" cuando el usuario intente hacer clic
+    btnNo.addEventListener("mouseover", () => {
+        const x = Math.random() * (window.innerWidth - btnNo.offsetWidth);
+        const y = Math.random() * (window.innerHeight - btnNo.offsetHeight);
+        btnNo.style.position = "absolute";
+        btnNo.style.left = `${x}px`;
+        btnNo.style.top = `${y}px`;
+    });
+
+    // Mostrar el mensaje cuando el usuario haga clic en "Sí"
+    btnYes.addEventListener("click", () => {
+        message.classList.remove("hidden");
+        btnYes.style.display = "none";
+        btnNo.style.display = "none";
     });
 });
